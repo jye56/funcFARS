@@ -1,0 +1,91 @@
+---
+title: "Functions for analyzing fatality data FARS"
+author: "Jay Ye"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Package funcFARS contains a group of functions that handle the reading, analyszing and plotting of Fatality Analysis Report System (FARS).
+
+
+
+```{r}
+library(funcFARS)
+
+```
+
+
+## Reading the file into R 
+
+The data files are arranged by years. 
+
+##### using fars_read function to read in the data for a specific year
+
+The function requires file path as the argument
+
+```{r}
+
+filename <- make_filename(2015)
+filepath <- system.file("extdata", filename, package = "funcFARS")
+myfile <- fars_read(filepath)
+
+head(myfile)
+
+```
+
+##### using a wrapper function fars_read_years to read data
+
+For reading data of a specific year, one can also directly furnish the year of interest to the function fars_read_years without the need to construct a file name first as for the function fars_read shown above. The function can also read data from several years.The argument in that case is a vector of years.
+
+For the demonstration purpose, we will need set the working directory to where the files are located within the package funcFars. In the acutal usage, you  would need to put these files in your working directory.
+
+```{r}
+oldwd <- getwd()
+setwd(system.file("extdata", package = "funcFARS"))
+fars_read_years(c(2013,2015))
+setwd(oldwd)
+
+```
+
+
+## Summarize the statistic for each year
+
+Function fars_summarize_years summarizes the total number of accidents for each month by year.
+
+```{r}
+
+oldwd <- getwd()
+setwd(system.file("extdata", package = "funcFARS"))
+fars_summarize_years(c(2013,2014,2015))
+
+setwd(oldwd)
+
+```
+
+
+
+
+## Plot the locations of accidents by state and year
+
+Function fars_map_state plots the accident location by state and year. The following example shows the location of accidents for Florida in the year of 2015.
+
+
+```{r, fig.show='hold'}
+
+oldwd <- getwd()
+setwd(system.file("extdata", package = "funcFARS"))
+fars_map_state(12,2015)
+setwd(oldwd)
+
+```

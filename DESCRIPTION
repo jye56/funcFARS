@@ -1,0 +1,21 @@
+Package: funcFARS
+Type: Package
+Title: Functions for Fatality Analysis Report System
+Version: 0.1.0
+Author: Jay Ye
+Maintainer: Jay Ye <jye@dahlchase.com>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports: dplyr,
+    tidyr,
+    maps,
+    readr,
+    magrittr
+Suggests: testthat,
+    knitr,
+    rmarkdown
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr
