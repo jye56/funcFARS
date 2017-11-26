@@ -7,5 +7,6 @@ This package export five functions for the analysis of data in Fatality Analysis
 
 A vignette to show how the functions are used is also included.
 
-Here is the url to the Travis badge:
-https://travis-ci.org/jye56/funcFARS.svg?branch=master
+Here is the url to the Travis badge for Build #1:
+
+https://travis-ci.org/jye56/funcFARS/builds/307131226?utm_source=email&utm_medium=notification
